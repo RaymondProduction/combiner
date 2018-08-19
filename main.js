@@ -16,4 +16,9 @@ var getFiles = function (dir, files_){
     return files_;
 };
 
+// move it works! =)
+
+fs.rename('test.txt', '../test2.txt', function(err) {
+    if ( err ) console.log('ERROR: ' + err);
+});
 console.log(getFiles('./'));
