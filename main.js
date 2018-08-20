@@ -2,7 +2,7 @@ var fs = require('fs');
 var path = require('path');
 
 var getFiles = function (dir, files_){
-    
+
   files_ = files_ || [];
     var files = fs.readdirSync(dir);
     for (var i in files){
@@ -21,4 +21,4 @@ var getFiles = function (dir, files_){
 fs.rename('test.txt', '../test2.txt', function(err) {
     if ( err ) console.log('ERROR: ' + err);
 });
-console.log(getFiles('./'));
+console.log(getFiles('test'));
