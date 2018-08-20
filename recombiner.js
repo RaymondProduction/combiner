@@ -21,10 +21,10 @@ var getFiles = function (dir, files_){
 function moving(files) {
     console.log(files);
     for (var file of files) {
-        console.log(file,' move ', recombineFolder + '/' + file.replace(/---/g, "/"));
-        // fs.rename(file, file.replace(/\//g, "---"), (err) => {
-        //     if ( err ) console.log('ERROR: ' + err);
-        // });
+        console.log(file,' move ', file.replace(/---/g, "/").replace(combineFolder+'/', ''));
+        fs.rename(file,  file.replace(/---/g, "/").replace(combineFolder+'/', ''), (err) => {
+            if ( err ) console.log('ERROR: ' + err);
+        });
     }
 }
 
