@@ -1,6 +1,7 @@
 var fs = require('fs');
 var path = require('path');
 var combineDir = 'combine';
+var dirForCombine = 'test';
 
 var getFiles = function (dir, files_){
 
@@ -14,7 +15,7 @@ var getFiles = function (dir, files_){
             files_.push(name);
         }
     }
-    if (dir === 'test') { return moving(files_) } else { return; }
+    if (dir === dirForCombine) { return moving(files_) } else { return; }
 };
 
 function moving(files) {
@@ -27,7 +28,8 @@ function moving(files) {
     }
 }
 
-if (fs.exists('combine')) {
-    fs.mkdirSync('combine');
+if (!fs.existsSync(combineDir)) {
+    fs.mkdirSync(combineDir);
 }
-getFiles('test');
+getFiles(dirForCombine);
+
