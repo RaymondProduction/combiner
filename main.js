@@ -13,12 +13,16 @@ var getFiles = function (dir, files_){
             files_.push(name);
         }
     }
-    return files_;
+    return moving(files_);
 };
 
-// move it works! =)
+function moving(files) {
+    for (var file of files) {
+        console.log(file,' move ',file.replace(/\//g, "---"));
+        fs.rename(file, file.replace(/\//g, "---"), (err) => {
+            if ( err ) console.log('ERROR: ' + err);
+        });
+    }
+}
 
-fs.rename('test.txt', '../test2.txt', function(err) {
-    if ( err ) console.log('ERROR: ' + err);
-});
-console.log(getFiles('test'));
+getFiles('test');
